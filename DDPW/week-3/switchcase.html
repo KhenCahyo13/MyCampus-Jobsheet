@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let jawab = prompt("Kamu beruntung! Silahkan pilih hadiahmu dengan memasukkan angak 1 sampai 5");
+        let hadiah = '';
+
+        switch(jawab) {
+            case "1":
+                hadiah = "Tisu";
+                break;
+            case "2":
+                hadiah = "Kotak Kopi";
+                break;
+            case "3":
+                hadiah = "Kotak Kopi";
+                break;
+            case "4":
+                hadiah = "Minyak Goreng";
+                break;
+            case "5":
+                hadiah = "Uang 50K";
+                break;
+            default:
+                document.write("<p>Oops! Kamu salah pilih</p>");
+            
+            if (hadiah === "") {
+                document.write("<p>Kamu gagal mendapat hadiah");
+            } else {
+                document.write("<h2>Selamat, kamu mendapatkan " + hadiah + "</h2>");
+            }
+        }
+    </script>
+</body>
+</html>

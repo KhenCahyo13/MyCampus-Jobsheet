@@ -1,0 +1,15 @@
+.responsive-card-container {
+    position: absolute;
+    top: 164%;
+    transform: translateY(-164%);
+    width: 100%;
+}
+
+@media screen and (min-width: 998px) {
+    .responsive-card-container {
+        position: absolute;
+        top: 30%;
+        transform: translateY(-30%);
+        width: 100%;
+    }
+}

@@ -20,4 +20,8 @@ public class Employee extends Person {
         this.employeeEmail = employeeEmail;
         this.employeeSkills = new ArrayList<>();
     }
+
+    public void addSkills (List<Skill> skills) {
+        this.employeeSkills = skills;
+    }
 }

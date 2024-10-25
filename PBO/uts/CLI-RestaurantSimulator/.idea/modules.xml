@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CLI-RestaurantSimulation.iml" filepath="$PROJECT_DIR$/CLI-RestaurantSimulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CLI-RestaurantSimulator.iml" filepath="$PROJECT_DIR$/CLI-RestaurantSimulator.iml" />
     </modules>
   </component>
 </project>

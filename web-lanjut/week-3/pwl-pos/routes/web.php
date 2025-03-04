@@ -11,7 +11,12 @@ Route::get('/', function () {
 
 // User Routes
 Route::prefix('/user')->group(function () {
+    // Page Routes
     Route::get('', [UserController::class, 'index'])->name('user.index');
+    Route::get('/store', [UserController::class , 'storePage'])->name('user.store-page');
+    Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/{id}/update', [UserController::class, 'updatePage'])->name('user.update-page');
+    // Data Manipulation Routes
     Route::post('', [UserController::class, 'store'])->name('user.store');
     Route::patch('/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/{id}', [UserController::class, 'delete'])->name('user.delete');

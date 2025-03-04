@@ -8,16 +8,15 @@
 </head>
 <body>
     <h1>Users Data</h1>
-    <form action="{{ route('user.store') }}" method="POST">
-        @csrf
-        <button type="submit">Add New User</button>
-    </form>    
+    <a href="{{ route('user.store-page') }}">Create New User</a> 
     <table border="1" cellpadding="2" cellspacing="0">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Name</th>
+                <th>Level Code</th>
+                <th>Level Name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -27,17 +26,15 @@
                     <td>{{ $user->user_id }}</td>
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->level->level_code }}</td>
+                    <td>{{ $user->level->level_name }}</td>
                     <td>
                         <form action="{{ route('user.delete', ['id' => $user->user_id]) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button type="submit">Delete</button>
                         </form>
-                        <form action="{{ route('user.update', ['id' => $user->user_id]) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <button type="submit">Update</button>
-                        </form>
+                        <a href="{{ route('user.update-page', ['id' => $user->user_id]) }}">Update</a>
                     </td>
                 </tr>
             @endforeach

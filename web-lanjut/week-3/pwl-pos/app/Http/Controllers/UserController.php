@@ -8,34 +8,54 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index() {
-        $users = User::all();
+        $users = User::with('level')->get();
 
         return view('pages.user.index', compact('users'));
     }
 
-    public function store() {
+    public function show(string $id) {
+        $user = User::findOrFail($id);
+
+        return view('pages.user.details', compact('user'));
+    }
+
+    public function storePage() {
+        return view('pages.user.store');
+    }
+
+    public function updatePage(string $id) {
+        $user = User::findOrFail($id);
+
+        return view('pages.user.update', compact('user'));
+    }
+
+    public function store(Request $request) {
         $operation = User::create([
-            'level_id' => fake()->numberBetween(1, 3),
-            'name' => fake()->name(),
-            'username' => fake()->unique()->userName,
-            'password' => bcrypt('123456'),
+            'level_id' => $request->level_id,
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
         ]);
 
         if (!$operation) {
             return 'Failed to insert data!';
         }
 
-        return 'Successufully insert data!';
+        return redirect()->route('user.index');
     }
 
-    public function update(string $id) {
-        $operation = User::where('user_id', $id)->update(['name' => fake()->name()]);
+    public function update(Request $request, string $id) {
+        $operation = User::where('user_id', $id)->update([
+            'level_id' => $request->level_id,
+            'name' => $request->name,
+            'username' => $request->username,
+        ]);
 
         if (!$operation) {
             return 'Failed to update data!';
         }
 
-        return 'Successufully update data!';
+        return redirect()->route('user.index');
     }
 
     public function delete(string $id) {

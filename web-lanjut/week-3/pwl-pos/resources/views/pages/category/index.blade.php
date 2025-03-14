@@ -1,47 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categories Data</title>
-</head>
-<body>
-    <h1>Categories Data</h1>
-    <form action="{{ route('category.store') }}" method="POST">
-        @csrf
-        <button type="submit">Add New Category</button>
-    </form>    
-    <table border="1" cellpadding="2" cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categories as $category)
-                <tr>
-                    <td>{{ $category->category_id }}</td>
-                    <td>{{ $category->category_code }}</td>
-                    <td>{{ $category->category_name }}</td>
-                    <td>
-                        <form action="{{ route('category.delete', ['id' => $category->category_id]) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit">Delete</button>
-                        </form>
-                        <form action="{{ route('category.update', ['id' => $category->category_id]) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <button type="submit">Update</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html>
+@extends('layouts.main')
+
+@section('title', 'Categories')
+
+@section('contents')
+    {{-- Alert Message --}}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+    {{-- Contents --}}
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="my-0 fs-4">Categories Table</p>
+                <div class="d-flex align-items-center">
+                    <a href="{{ route('categories.store-page') }}" class="btn btn-primary btn-sm ml-0 ml-md-2">Create New Category</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered" id="categoriesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+    <script>
+        const categoriesTable = document.getElementById('categoriesTable');
+
+        let categoriesDataTable = $(categoriesTable).DataTable({
+            serverSide: true,
+            ajax: {
+                url: "{{ route('categories.list') }}",
+                dataType: "JSON",
+                type: "GET",
+            },
+            columns: [
+                {
+                    data: "DT_RowIndex",
+                    className: "text-center",
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: "category_code",
+                    orderable: true,
+                    searchable: true
+                },
+                {
+                    data: "category_name",
+                    orderable: true,
+                    searchable: true
+                },
+                {
+                    data: "actions",
+                    orderable: false,
+                    searchable: false
+                },
+            ],
+        });
+    </script>
+@endpush

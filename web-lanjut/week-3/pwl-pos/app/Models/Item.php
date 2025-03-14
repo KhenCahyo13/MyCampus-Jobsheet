@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Item extends Model
 {
@@ -16,4 +17,8 @@ class Item extends Model
         'item_buy_price',
         'item_sell_price',
     ];
+
+    public function category(): HasOne {
+        return $this->hasOne(Category::class, 'category_id', 'category_id');
+    }
 }

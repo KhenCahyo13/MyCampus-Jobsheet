@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Stock extends Model
 {
@@ -14,4 +15,12 @@ class Stock extends Model
         'user_id',
         'stock_qty',
     ];
+
+    public function item(): HasOne {
+        return $this->hasOne(Item::class, 'item_id', 'item_id');
+    }
+
+    public function user(): HasOne {
+        return $this->hasOne(User::class, 'user_id', 'user_id');
+    }
 }

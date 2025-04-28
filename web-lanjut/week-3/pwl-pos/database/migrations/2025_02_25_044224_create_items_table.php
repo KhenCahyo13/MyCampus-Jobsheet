@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('item_name', 100);
             $table->integer('item_buy_price');
             $table->integer('item_sell_price');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

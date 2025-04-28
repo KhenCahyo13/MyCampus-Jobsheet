@@ -48,6 +48,10 @@ class ItemController extends Controller
         }
 
         $data = $validator->validated();
+        if ($request->file('image') !== null) {
+            $filePath = $request->file('image')->store('item-images', 'public');
+            $data['image'] = $filePath;   
+        }
         $item = Item::create($data);
 
         if (!$item) {
@@ -76,6 +80,10 @@ class ItemController extends Controller
         }
 
         $data = $validator->validated();
+        if ($request->file('image') !== null) {
+            $filePath = $request->file('image')->store('item-images', 'public');
+            $data['image'] = $filePath;   
+        }
         $item = Item::find($id);
 
         if (!$item) {
@@ -120,6 +128,7 @@ class ItemController extends Controller
             'item_name' => 'required|string|max:100',
             'item_buy_price' => 'required|numeric',
             'item_sell_price' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 }

@@ -14,6 +14,7 @@ class AuthController extends Controller
             'name' => 'required|max:100',
             'username' => 'required|max:20|unique:users,username',
             'password' => 'required|min:8',
+            'profile_picture' => 'nullable|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         if ($validator->fails()) {
@@ -27,6 +28,12 @@ class AuthController extends Controller
         $data = $validator->validated();
         $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         $data['level_id'] = 3; // staff
+
+        if ($request->file('profile_picture') !== null) {
+            $filePath = $request->file('profile_picture')->store('user-profile', 'public');
+            $data['profile_picture'] = $filePath;   
+        }
+
         $user = User::create($data);
 
         if (!$user) {

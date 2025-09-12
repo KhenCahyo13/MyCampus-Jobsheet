@@ -1,3 +1,7 @@
+## Answer Number 1
+
+![Answer 1 code results](./images/question-1.png)
+
 ## Answer Number 2
 
 Understanding the Dart programming language before using the Flutter framework is essential because Flutter is built entirely on Dart, so all logic, data structures, state management, and interactions between components are written in that language. By mastering Dart, a developer can more easily understand the basic concepts of Flutter, such as widgets, async/await for asynchronous processing, null safety, and the OOP paradigm used. Without a good understanding of Dart, using Flutter will be confusing because developers will only memorize the syntax without truly understanding the workflow behind the code, which can hinder productivity, debugging, and the development of complex applications.
@@ -87,6 +91,7 @@ Understanding the Dart programming language before using the Flutter framework i
   - Method → bound to a class/object, has access to this.
 
 ## Answer Number 4
-**For code example, you can see in ```src/question-4.dart``` file**
+
+![Answer 1 code results](./images/question-4.png)
 
 In Dart, null safety ensures that variables cannot be ```null``` unless explicitly declared with a ```?```, thus helping to prevent ```null reference``` errors at runtime, for example, ```String? name;``` means that the variable name can be ```null```, whereas ```String name = “A”;``` cannot be ```null```. Meanwhile, the ```late``` keyword is used when a non-nullable variable cannot be immediately initialized at declaration, but will be ensured to be filled before use, this is useful for dependency injection or delayed initialization. Thus, null safety ensures that variables do not arbitrarily have null values, while late allows delayed initialization without violating null safety rules.

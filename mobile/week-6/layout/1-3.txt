@@ -1,0 +1,101 @@
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   MyApp({super.key});
+
+//   final Widget titleSection = Container(
+//     padding: const EdgeInsets.all(12.0),
+//     child: Row(
+//       children: [
+//         Expanded(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Container(
+//                 padding: const EdgeInsets.only(bottom: 8.0),
+//                 child: const Text(
+//                   'Wisata Gunung Batu',
+//                   style: TextStyle(fontWeight: FontWeight.bold),
+//                 ),
+//               ),
+//               Text(
+//                 'Batu, Malang, Jawa Timur, Indonesia',
+//                 style: TextStyle(color: Colors.grey[500]),
+//               ),
+//             ],
+//           ),
+//         ),
+//         Icon(Icons.star, color: Colors.red[500]),
+//         const Text('41'),
+//       ],
+//     ),
+//   );
+
+//   Widget textSection = Container(
+//     padding: const EdgeInsets.all(32),
+//     child: const Text(
+//       'Lorem ipsum dolor sit amet, '
+//       'consectetur adipiscing elit, sed do eiusmod tempor incididunt '
+//       'ut labore et dolore magna aliqua. Ut enim ad minim veniam, '
+//       'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+//       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
+//       'Khen Muhammad Cahyo - 244107023002',
+//       softWrap: true,
+//     ),
+//   );
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Layout: Khen Muhammad Cahyo dan 244107023002',
+//       home: Scaffold(
+//         appBar: AppBar(title: const Text('Flutter Layout Demo')),
+//         body: ListView(
+//           children: [
+//             Image.asset(
+//               'assets/images/hutan.png',
+//               width: 600,
+//               height: 240,
+//               fit: BoxFit.cover,
+//             ),
+//             titleSection, buttonSection(context), textSection
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   Column _buildButtonColumn(Color color, IconData icon, String label) {
+//     return Column(
+//       mainAxisSize: MainAxisSize.min,
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         Icon(icon, color: color),
+//         Container(
+//           margin: const EdgeInsets.only(top: 8),
+//           child: Text(
+//             label,
+//             style: TextStyle(
+//               fontSize: 12,
+//               fontWeight: FontWeight.w400,
+//               color: color,
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+
+//   Widget buttonSection(BuildContext context) {
+//     Color color = Theme.of(context).primaryColor;
+
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       children: [
+//         _buildButtonColumn(color, Icons.call, 'CALL'),
+//         _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+//         _buildButtonColumn(color, Icons.share, 'SHARE'),
+//       ],
+//     );
+//   }
+// }
